@@ -1,0 +1,82 @@
+/* Container (position on screen) */
+.toggle-container {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* Toggle background */
+.toggle-button {
+  width: 70px;
+  height: 34px;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  border-radius: 50px;
+  padding: 3px;
+  position: relative;
+  transition: 0.4s ease;
+  box-shadow: 0 0 12px #a855f7;
+}
+
+/* Active state (Neon theme) */
+.toggle-button.active {
+  background: linear-gradient(135deg, #00d4ff, #4f46e5);
+  box-shadow: 0 0 14px #60a5ff;
+}
+
+/* Sliding circle */
+.toggle-button::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: 0.4s ease;
+
+  /* glowing */
+  box-shadow: 0 0 12px #ffffff;
+}
+
+/* Slide when active */
+.toggle-button.active::before {
+  transform: translateX(36px);
+  box-shadow: 0 0 12px #a5f3fc;
+}
+
+/* Icons */
+.icon {
+  position: absolute;
+  font-size: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+/* Sun (left) */
+.icon.sun {
+  left: 10px;
+  opacity: 1;
+}
+
+/* Moon (right) */
+.icon.moon {
+  right: 10px;
+  opacity: 0;
+}
+
+/* Switch icons */
+.toggle-button.active .sun {
+  opacity: 0;
+  transform: translateY(-50%) scale(0.6);
+}
+
+.toggle-button.active .moon {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}

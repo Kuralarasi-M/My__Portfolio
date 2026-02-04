@@ -1,0 +1,149 @@
+/* ===============================
+   MAIN BACKGROUND (behind site)
+   =============================== */
+
+/* .galaxy-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+
+  background: radial-gradient(
+      circle at 50% 30%,
+      #8b5cf6 0%,
+      #4c1d95 40%,
+      #1a0529 100%
+  );
+} */
+
+/* Prevent scroll issues */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+
+/* ===============================
+   FLOATING NEBULA CLOUDS
+   =============================== */
+
+.nebula {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  filter: blur(90px);
+  z-index: -9;
+  pointer-events: none;
+
+  background: radial-gradient(circle, #a855f766 0%, transparent 70%);
+  animation: floatNebula 20s ease-in-out infinite alternate;
+}
+
+.nebula-1 { top: 10%; left: 15%; }
+.nebula-2 {
+  bottom: 10%;
+  right: 20%;
+  animation-delay: 4s;
+}
+.nebula-3 {
+  top: 50%;
+  right: 40%;
+  animation-delay: 8s;
+}
+
+@keyframes floatNebula {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0.6; }
+  100% { transform: translateY(40px) rotate(20deg); opacity: 1; }
+}
+
+
+/* ===============================
+   STARS (infinite blinking)
+   =============================== */
+
+.stars-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -8;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+
+  /* violet glow */
+  box-shadow: 
+    0 0 10px #c084fc,
+    0 0 18px #a855f7;
+
+  /* position */
+  top: calc(var(--y) * 100vh);
+  left: calc(var(--x) * 100vw);
+
+  animation: blink 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+  25%{
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  75%{
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+
+/* ===============================
+   SHOOTING STARS (top-left → bottom-right)
+   MOBILE FRIENDLY
+   =============================== */
+
+.shooting-stars-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -7;
+  pointer-events: none;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+
+  background: linear-gradient(90deg, #ffffff, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px #e9d5ff);
+
+  /* smooth animation */
+  animation: shoot 4s linear infinite;
+}
+
+/* using vw/vh → works on all screens */
+@keyframes shoot {
+  from {
+    transform: translate(0, 0) rotate(225deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(60vw, 60vh) rotate(225deg);
+    opacity: 0;
+  }
+}

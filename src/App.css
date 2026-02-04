@@ -1,0 +1,18 @@
+.table-transparent th,
+.table-transparent td,
+.table-transparent tbody tr,
+.table-transparent tbody th,
+.table-transparent tbody td{
+    background-color: transparent !important;
+    border:2px solid transparent;
+    font-weight: 500;
+    
+}
+
+
+
+
+
+.shadow{
+    box-shadow: 0 8px 20px rgba(250, 101, 225, 0.15)
+}
